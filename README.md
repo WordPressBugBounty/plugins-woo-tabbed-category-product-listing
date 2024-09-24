@@ -1,0 +1,1 @@
+# plugins-woo-tabbed-category-product-listing
