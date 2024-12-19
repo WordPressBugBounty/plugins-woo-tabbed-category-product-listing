@@ -7,9 +7,9 @@
 * Author URI: https://www.quantumcloud.com/
 * Text Domain: woo-tabbed-category
 * Requires at least: 4.6
-* Version: 2.6.8
+* Version: 2.6.9
 * License: GPL2
-* Tested up to: 6.6.2
+* Tested up to: 6.7.1
 */
 
 
@@ -907,7 +907,7 @@ function woo_tabbed_plugin_submenus( $menu_ord ){
 }
 
 
-//add_action( 'admin_notices', 'woo_tabbed_pro_notice', 100 );
+add_action( 'admin_notices', 'woo_tabbed_pro_notice', 100 );
 if ( ! function_exists( 'woo_tabbed_pro_notice' ) ) {
     function woo_tabbed_pro_notice(){
         global $pagenow, $typenow;
@@ -915,12 +915,12 @@ if ( ! function_exists( 'woo_tabbed_pro_notice' ) ) {
 
         if( isset($screen->base) && ( $screen->base == 'toplevel_page_woo-tab' || $screen->base == 'woo-tabbed_page_qcld_woo_tabbed_supports' ) ){
         ?>
-        <div id="message-tabbed" class="notice notice-info is-dismissible" style="padding:4px 0px 0px 4px;background:#C13825;">
+        <div id="message-tabbed" class="notice notice-info is-dismissible" style="padding:4px 0px 0px 4px;background:#e80607;">
             <?php
                 printf(
                     __('%s  %s  %s', 'woo-tabbed-category'),
                     '<a href="'.esc_url('https://www.quantumcloud.com/products/woo-tabbed-category-product-listing/').'" target="_blank">',
-                    '<img src="'.esc_url(QC_WOO_TAB_IMAGE_URL).'/halloween-Wootabbed.jpg" >',
+                    '<img src="'.esc_url(QC_WOO_TAB_IMAGE_URL).'/newyear24-wootabbed.jpg" >',
                     '</a>'
                 );
 
