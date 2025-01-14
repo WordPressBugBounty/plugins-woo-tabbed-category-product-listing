@@ -36,8 +36,8 @@ class Woo_Tabbled_Categoty{
         );
 
         wp_enqueue_script(
-            'select_two',
-            plugins_url('woo-tabbed-category-pro/assets/js/select2.full.js'),
+            'woo_tabbed_select_two',
+            plugins_url('woo-tabbed-category-product-listing/assets/js/select2.full.js'),
             array('jquery'),
             '0.1.0'
         );

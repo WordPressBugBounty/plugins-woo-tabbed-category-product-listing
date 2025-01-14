@@ -7,7 +7,7 @@
 * Author URI: https://www.quantumcloud.com/
 * Text Domain: woo-tabbed-category
 * Requires at least: 4.6
-* Version: 2.6.9
+* Version: 2.7.0
 * License: GPL2
 * Tested up to: 6.7.1
 */
