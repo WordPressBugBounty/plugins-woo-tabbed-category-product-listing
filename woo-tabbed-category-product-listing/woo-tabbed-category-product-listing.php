@@ -7,7 +7,7 @@
 * Author URI: https://www.quantumcloud.com/
 * Text Domain: woo-tabbed-category
 * Requires at least: 4.6
-* Version: 2.7.0
+* Version: 2.7.1
 * License: GPL2
 * Tested up to: 6.7.1
 */
@@ -907,7 +907,7 @@ function woo_tabbed_plugin_submenus( $menu_ord ){
 }
 
 
-add_action( 'admin_notices', 'woo_tabbed_pro_notice', 100 );
+//add_action( 'admin_notices', 'woo_tabbed_pro_notice', 100 );
 if ( ! function_exists( 'woo_tabbed_pro_notice' ) ) {
     function woo_tabbed_pro_notice(){
         global $pagenow, $typenow;

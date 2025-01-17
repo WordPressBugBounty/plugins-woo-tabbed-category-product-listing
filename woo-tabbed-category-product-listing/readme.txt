@@ -5,7 +5,7 @@ Tags: woocommerce category list, woocommerce product table, woocommerce, product
 Requires at least: 4.7
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: https://www.quantumcloud.com
 
@@ -17,7 +17,6 @@ Display Category based Product Listing for WooCommerce in tab format on any page
 
 <strong>WooCommerce</strong> plugin addon that allows you to showcase your products category wise in tabbed format. Woo Tabbed Category Product Listing is a simple woocommerce plugin that allows you to dynaimically load your products in tabs based on your product categories using short code - simple and easy.
 
-> 🚀 MERRY CHRISTMAS & HAPPY NEW YEAR! The SALE is ON. Use <strong>Coupon Code 2025</strong> for your GIFT on our website when you Grab the PRO version.
 > 🚀 Upgrade to <strong>[WooCommerce Tabbed Category wise Product Listing Pro](https://www.quantumcloud.com/products/woo-tabbed-category-product-listing/) now!</strong>
 > 🚀 [Support, Bug Report, Feature Requests](https://www.quantumcloud.com/resources/free-support/) | [WooCommerce Tabbed Category wise Product Listing Demo](http://dev.quantumcloud.com/woocommerce-tabbed-product-display/) 
 
@@ -163,6 +162,9 @@ Please check: http://www.quantumcloud.com/blog/woocommerce-tabbed-category-wise-
 3. Under the settings page in admin you can find the help in "Tabbed Category" menu.
 
 == Changelog ==
+
+= 2.7.1 =
+# End sale
 
 = 2.7.0 =
 # Fixed a broken link
