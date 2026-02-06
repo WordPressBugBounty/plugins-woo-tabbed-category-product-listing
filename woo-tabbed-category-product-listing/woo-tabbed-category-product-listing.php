@@ -7,9 +7,9 @@
 * Author URI: https://www.quantumcloud.com/
 * Text Domain: woo-tabbed-category
 * Requires at least: 4.6
-* Version: 2.7.1
+* Version: 2.7.2
 * License: GPL2
-* Tested up to: 6.7.1
+* Tested up to: 6.9
 */
 
 
@@ -52,8 +52,11 @@ Class Woo_Tab_Product_Category_List
 
         ?>
 
-        <form action="<?php echo esc_url($action); ?>" method="POST" enctype="multipart/form-data">
-            <div class="qc_woo_free_admin">
+        <form action="<?php echo esc_url($action); ?>" method="POST" enctype="multipart/form-data" class="qc_woo_free_admin_form">
+            
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="qc_woo_free_admin">
 
                 <h1> <?php esc_html_e( 'Woo Tabbed Category Product Listing Settings', 'woo-tabbed-category' ); ?></h1>
                 <div class="updated notice">
@@ -62,22 +65,30 @@ Class Woo_Tab_Product_Category_List
                 </div>
                 <div class="qc_woo_free_admin_left">
 
-
-                    <label for="product_number"> <?php esc_html_e( 'Product in each category', 'woo-tabbed-category' ); ?></label>
+                    
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Product in each category', 'woo-tabbed-category' ); ?></p>
                     <input type="text" name="product_number" id="product_number"
                            value="<?php echo esc_attr(get_option('product_number')); ?>"/>
-                    <br>
-                    <p class="qc-opt-dcs-font"> <?php esc_html_e( 'You can truncate category name by limiting number of letters to
+                 
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+
+                    <p class="qc-opt-dcs-font qcld_wootbs_title"> <?php esc_html_e( 'You can truncate category name by limiting number of letters to
                         display', 'woo-tabbed-category' ); ?></p>
                     <input type="number" name="max_char_per_cat" value="<?php echo esc_attr(get_option('max_char_per_cat')); ?>">
-                    <br>
-                    <p> <?php esc_html_e( 'Number of column in each category', 'woo-tabbed-category' ); ?></p>
+                  
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Number of column in each category', 'woo-tabbed-category' ); ?></p>
                     <input type="text" name="column_number" id="product_number"
                            value="<?php echo esc_attr(get_option('column_number')); ?>"/>
-                    <br>
+                        </div>
+                     <div class="qcld_wootbs_setting_divider">
 
                     <div class="admin_display_list admin_display_list_bg admin_display_list_full">
-                        <p><?php esc_html_e( 'Select categories you want to exclude ( Use Ctrl+Select for multiple selections )', 'woo-tabbed-category' ); ?></p>
+                        <p class="qcld_wootbs_title"><?php esc_html_e( 'Select categories you want to exclude ( Use Ctrl+Select for multiple selections )', 'woo-tabbed-category' ); ?></p>
                         <?php $product_categories = get_terms('product_cat'); ?>
                         <?php $selected_categories = unserialize(get_option('selected_categories')); ?>
                         <select name="selected_categories[]" id="categories" multiple="multiple">
@@ -96,202 +107,218 @@ Class Woo_Tab_Product_Category_List
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <br>
-                    <p> <?php esc_html_e( 'Display Category Image with Category filter', 'woo-tabbed-category' ); ?></p>
+                      </div>
+                   <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Display Category Image with Category filter', 'woo-tabbed-category' ); ?></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_enable_category_image" <?php echo(get_option('qc_woo_tabbed_enable_category_image') == 'enable' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('enable'); ?>">
-                             <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('enable'); ?>"  id="qc_woo_tabbed_display_category_url_based_display">
+                             <label for="qc_woo_tabbed_display_category_url_based_display"><?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_enable_category_image" <?php echo(get_option('qc_woo_tabbed_enable_category_image') == '' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr(''); ?>">
-                             <?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr(''); ?>" id="qc_woo_tabbed_display_category_url_based_with_filter">
+                             <label for="qc_woo_tabbed_display_category_url_based_with_filter"><?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-                    <br>
-                    <p> <?php esc_html_e( 'Load categories with URL', 'woo-tabbed-category' ); ?></p>
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Load categories with URL', 'woo-tabbed-category' ); ?></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_display_category_url_based" <?php echo(get_option('qc_woo_tabbed_display_category_url_based') == 'enable' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('enable'); ?>">
-                             <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('enable'); ?>" id="qc_woo_tabbed_display_category_url_based_categories">
+                            <label for="qc_woo_tabbed_display_category_url_based_categories"> <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_display_category_url_based" <?php echo(get_option('qc_woo_tabbed_display_category_url_based') == '' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr(''); ?>">
-                             <?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr(''); ?>" id="qc_woo_tabbed_display_category_url_based_load_categories">
+                             <label for="qc_woo_tabbed_display_category_url_based_load_categories"><?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-                    <br>
-                    <p><?php esc_html_e( 'Sort Category ', 'woo-tabbed-category' ); ?></p>
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"><?php esc_html_e( 'Sort Category ', 'woo-tabbed-category' ); ?></p>
                     <ul class="radio-list woo_menu_orders">
                         <li>
                             <input type="radio"
                                    name="category_order" <?php echo(get_option('category_order') == 'asc' ? 'checked' : ''); ?>
-                                   value="asc">
-                            <?php esc_html_e( 'By Title Ascending ', 'woo-tabbed-category' ); ?>
+                                   value="asc"  id="category_order_asc">
+                           <label for="category_order_asc"> <?php esc_html_e( 'By Title Ascending ', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="category_order" <?php echo(get_option('category_order') == 'desc' ? 'checked' : ''); ?>
-                                   value="desc">
-                            <?php esc_html_e( 'By Title Descending', 'woo-tabbed-category' ); ?>
+                                   value="desc" id="category_order_desc">
+                           <label for="category_order_desc"> <?php esc_html_e( 'By Title Descending', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="category_order" <?php echo(get_option('category_order') == 'menu_order' ? 'checked' : ''); ?>
-                                   value="menu_order">
-                            <?php esc_html_e( 'Menu Order', 'woo-tabbed-category' ); ?>
+                                   value="menu_order" id="category_order_menu_order">
+                           <label for="category_order_menu_order"> <?php esc_html_e( 'Menu Order', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="category_order" <?php echo(get_option('category_order') == 'term_order' ? 'checked' : ''); ?>
-                                   value="term_order">
-                            <?php esc_html_e( 'Order by Category ID', 'woo-tabbed-category' ); ?>
+                                   value="term_order" id="category_order_term_order">
+                           <label for="category_order_term_order"> <?php esc_html_e( 'Order by Category ID', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-
-                    <p> <?php esc_html_e( 'Sort products by', 'woo-tabbed-category' ); ?></p>
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Sort products by', 'woo-tabbed-category' ); ?></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="qcld_orderby_product" <?php echo(get_option('qcld_orderby_product') == 'title' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('title'); ?>">
-                             <?php esc_html_e( 'Title', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('title'); ?>" id="qcld_orderby_product_title">
+                           <label for="qcld_orderby_product_title">  <?php esc_html_e( 'Title', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qcld_orderby_product" <?php echo(get_option('qcld_orderby_product') == 'date' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('date'); ?>">
-                             <?php esc_html_e( 'Date', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('date'); ?>" id="qcld_orderby_product_date">
+                             <label for="qcld_orderby_product_date"> <?php esc_html_e( 'Date', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qcld_orderby_product" <?php echo(get_option('qcld_orderby_product') == 'rand' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('rand'); ?>">
-                             <?php esc_html_e( 'Rand', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('rand'); ?>" id="qcld_orderby_product_rand">
+                           <label for="qcld_orderby_product_rand">   <?php esc_html_e( 'Rand', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qcld_orderby_product" <?php echo(get_option('qcld_orderby_product') == 'id' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('id'); ?>">
-                             <?php esc_html_e( 'ID', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('id'); ?>" id="qcld_orderby_product_id">
+                             <label for="qcld_orderby_product_id"> <?php esc_html_e( 'ID', 'woo-tabbed-category' ); ?></label>
                         </li>
 
                         <li>
                             <input type="radio"
                                    name="qcld_orderby_product" <?php echo(get_option('qcld_orderby_product') == 'menu_order' ? 'checked' : ''); ?>
-                                   value="menu_order">
-                            <?php esc_html_e( 'Menu Order', 'woo-tabbed-category' ); ?>
+                                   value="menu_order" id="qcld_orderby_product_menu_order">
+                           <label for="qcld_orderby_product_menu_order">  <?php esc_html_e( 'Menu Order', 'woo-tabbed-category' ); ?>
                         </li>
                     </ul>
-                    <br>
-
-                    <p> <?php esc_html_e( 'Product sorting order', 'woo-tabbed-category' ); ?></p>
+           
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Product sorting order', 'woo-tabbed-category' ); ?></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="order_product_by" <?php echo(get_option('order_product_by') == 'ASC' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('ASC'); ?>">
-                             <?php esc_html_e( 'Ascending', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('ASC'); ?>" id="order_product_by_ASC">
+                            <label for="order_product_by_ASC"> <?php esc_html_e( 'Ascending', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="order_product_by" <?php echo(get_option('order_product_by') == 'DESC' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('DESC'); ?>">
-                             <?php esc_html_e( 'Descending', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('DESC'); ?>" id="order_product_by_DESC">
+                             <label for="order_product_by_DESC"><?php esc_html_e( 'Descending', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-                    <br>
-
-                    <p> <?php esc_html_e( 'Use Category ID', 'woo-tabbed-category' ); ?> <i><?php esc_html_e( '( Try turning this on if category tabs are not working for non-English stores )', 'woo-tabbed-category' ); ?></i></p>
+         
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Use Category ID', 'woo-tabbed-category' ); ?> <i><?php esc_html_e( '( Try turning this on if category tabs are not working for non-English stores )', 'woo-tabbed-category' ); ?></i></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="qcld_use_category_tab" <?php echo(get_option('qcld_use_category_tab') == 'slug' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('slug'); ?>">
-                             <?php esc_html_e( 'Slug', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('slug'); ?>" id="qcld_use_category_tab_slug">
+                             <label for="qcld_use_category_tab_slug"><?php esc_html_e( 'Slug', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qcld_use_category_tab" <?php echo(get_option('qcld_use_category_tab') == 'id' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('id'); ?>">
-                             <?php esc_html_e( 'ID', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('id'); ?>" id="qcld_use_category_tab_id">
+                             <label for="qcld_use_category_tab_id"><?php esc_html_e( 'ID', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-                    <p> <?php esc_html_e( 'Scroll to product section when click category', 'woo-tabbed-category' ); ?></p>
+                                        </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Scroll to product section when click category', 'woo-tabbed-category' ); ?></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_scroll_category_clickable" <?php echo(get_option('qc_woo_tabbed_scroll_category_clickable') == 'enable' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('enable'); ?>">
-                             <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('enable'); ?>" id="qc_woo_tabbed_scroll_category_clickable_enable">
+                           <label for="qc_woo_tabbed_scroll_category_clickable_enable">  <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_scroll_category_clickable" <?php echo(get_option('qc_woo_tabbed_scroll_category_clickable') == '' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr(''); ?>">
-                             <?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr(''); ?>" id="qc_woo_tabbed_scroll_category_clickable_enable_disable">
+                            <label for="qc_woo_tabbed_scroll_category_clickable_enable_disable"><?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-                    <br>
-
-                    <p> <?php esc_html_e( 'Shortcode Preview with Page Builder ', 'woo-tabbed-category' ); ?> <i><?php esc_html_e( ' (ex: Elementor)', 'woo-tabbed-category' ); ?></i></p>
+           
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Shortcode Preview with Page Builder ', 'woo-tabbed-category' ); ?> <i><?php esc_html_e( ' (ex: Elementor)', 'woo-tabbed-category' ); ?></i></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_shortcode_preview" <?php echo(get_option('qc_woo_tabbed_shortcode_preview') == 'enable' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('enable'); ?>">
-                             <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('enable'); ?>" id="qc_woo_tabbed_shortcode_preview_enable">
+                             <label for="qc_woo_tabbed_shortcode_preview_enable"><?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
                                    name="qc_woo_tabbed_shortcode_preview" <?php echo(get_option('qc_woo_tabbed_shortcode_preview') == 'disable' ? 'checked' : ''); ?>
-                                   value="<?php echo esc_attr('disable'); ?>">
-                             <?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?>
+                                   value="<?php echo esc_attr('disable'); ?>" id="qc_woo_tabbed_shortcode_preview_disable">
+                            <label for="qc_woo_tabbed_shortcode_preview_disable"> <?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
-                    <br>
-
-                    <p> <?php esc_html_e( 'Show Empty Category', 'woo-tabbed-category' ); ?> <i><?php esc_html_e( ' ( If there is no Product in category )', 'woo-tabbed-category' ); ?></i></p>
+                                    
+                     
+                    </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Show Empty Category', 'woo-tabbed-category' ); ?> <i><?php esc_html_e( ' ( If there is no Product in category )', 'woo-tabbed-category' ); ?></i></p>
                     <ul class="radio-list">
                         <li>
                             <input type="radio"
-                                   name="qc_woo_tabbed_show_empty_category" <?php echo(get_option('qc_woo_tabbed_show_empty_category') == 'enable' ? 'checked' : ''); ?> value="<?php echo esc_attr('enable'); ?>">
-                             <?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?>
+                                   name="qc_woo_tabbed_show_empty_category" <?php echo(get_option('qc_woo_tabbed_show_empty_category') == 'enable' ? 'checked' : ''); ?> value="<?php echo esc_attr('enable'); ?>" id="qc_woo_tabbed_show_empty_category_enable">
+                             <label for="qc_woo_tabbed_show_empty_category_enable"><?php esc_html_e( 'Enable', 'woo-tabbed-category' ); ?></label>
                         </li>
                         <li>
                             <input type="radio"
-                                   name="qc_woo_tabbed_show_empty_category" <?php echo( ( get_option('qc_woo_tabbed_show_empty_category') == 'disable' || get_option('qc_woo_tabbed_show_empty_category') == '' ) ? 'checked' : ''); ?> value="<?php echo esc_attr('disable'); ?>">
-                             <?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?>
+                                   name="qc_woo_tabbed_show_empty_category" <?php echo( ( get_option('qc_woo_tabbed_show_empty_category') == 'disable' || get_option('qc_woo_tabbed_show_empty_category') == '' ) ? 'checked' : ''); ?> value="<?php echo esc_attr('disable'); ?>" id="qc_woo_tabbed_show_empty_category_disable">
+                             <label for="qc_woo_tabbed_show_empty_category_disable"><?php esc_html_e( 'Disable', 'woo-tabbed-category' ); ?></label>
                         </li>
                     </ul>
 
-                    <br>
-                    <label for="product_number"> <?php esc_html_e( 'Empty Category Message', 'woo-tabbed-category' ); ?></label>
+                                  </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qcld_wootbs_title"> <?php esc_html_e( 'Empty Category Message', 'woo-tabbed-category' ); ?></p>
                     <input type="text" name="qc_woo_tabbed_show_empty_category_msg" id="qc_woo_tabbed_show_empty_category_msg"
                            value="<?php echo esc_attr(get_option('qc_woo_tabbed_show_empty_category_msg') ? get_option('qc_woo_tabbed_show_empty_category_msg') : 'No product found in this category' ); ?>"/>
 
 
-                    <br>
-                    <p class="qc-opt-dcs-font"> <?php esc_html_e( 'You can paste or write your custom css here.', 'woo-tabbed-category' ); ?></p>
+                               </div>
+                     <div class="qcld_wootbs_setting_divider">
+                    <p class="qc-opt-dcs-font qcld_wootbs_title"> <?php esc_html_e( 'You can paste or write your custom css here.', 'woo-tabbed-category' ); ?></p>
                     <textarea name="custom_global_css"
                               class="form-control custom-global-css"
                               cols="" rows="15"><?php echo esc_textarea( get_option('custom_global_css') , 'woo-tabbed-category' ); ?></textarea>
-                    <br>
+                    
                     <?php wp_nonce_field('woo-tab'); ?>
                     <div class="admin_cus_btn1">
                         <input type="submit" class="btn btn-primary submit-button" name="submit"
                                id="submit" value="<?php esc_attr_e('Save Settings', 'woo-tabbed-category'); ?>"/>
                     </div>
+
+                    </div>
                 </div>
                 <div class="qc_woo_free_admin_right">
+                    <div class="blob b1"></div>
                     <h2> <?php esc_html_e( 'Upgrade to Pro', 'woo-tabbed-category' ); ?></h2>
                     <ul>
                         <li><?php esc_html_e( '10+ Innovative Design Templates', 'woo-tabbed-category' ); ?></li>
@@ -325,12 +352,13 @@ Class Woo_Tab_Product_Category_List
 
 
                 <div class="qc_woo_free_admin_right copy_right_box">
+                    <div class="blob b1"></div>
                     <div class="qcld_woo_tabbed_wholessale_woo_wrap">
                         <div class="qcld_woo_tabbed_wholessale_woo">
                             <a href="<?php echo esc_url('https://www.quantumcloud.com/products/wholesale-plugin-for-woocommerce/'); ?>" target="_blank"><img src="<?php echo esc_url(QC_WOO_TAB_IMAGE_URL); ?>/wholesale-woocommerce-plugin.png" alt=""></a>
                            
                 <p><?php esc_html_e( 'Increase sales on your Woocommerce shop with the Wholesale addon. Provides useful features like Role Based Pricing, Dynamic Pricing and discounts based on Weight, Quantity, Price, Total Units and Number of items and Minimum Maximum Quantity for checkout.', 'woo-tabbed-category' ); ?></p> <p style="font-size: 15px;"> <?php esc_html_e( 'Wholesale features plugin works with WooTabbed', 'woo-tabbed-category' ); ?> <b><?php esc_html_e( 'Free', 'woo-tabbed-category' ); ?></b>, <?php esc_html_e( 'WooTabbed', 'woo-tabbed-category' ); ?> <b><?php esc_html_e( 'Pro', 'woo-tabbed-category' ); ?></b> <?php esc_html_e( 'and', 'woo-tabbed-category' ); ?> <b> <?php esc_html_e( 'any', 'woo-tabbed-category' ); ?></b> <?php esc_html_e( 'Woocommerce site.', 'woo-tabbed-category' ); ?></p>
-                            <p><a href="<?php echo esc_url('https://www.quantumcloud.com/products/wholesale-plugin-for-woocommerce/'); ?>" target="_blank"><?php esc_html_e( 'Get it Now!', 'woo-tabbed-category' ); ?> </a></p>
+                            <p><a class="qcld_GetitNow" href="<?php echo esc_url('https://www.quantumcloud.com/products/wholesale-plugin-for-woocommerce/'); ?>" target="_blank"><?php esc_html_e( 'Get it Now!', 'woo-tabbed-category' ); ?> </a></p>
                         </div>
                     </div>
                 </div>
@@ -633,7 +661,6 @@ if ( ! function_exists( 'wtcpl_plugin_styles' ) ) {
 }
 
 
-
 /**
  * The wtcpl_load_products() body
  */
@@ -747,7 +774,6 @@ if ( ! function_exists( 'wtcpl_load_products' ) ) {
 
                                 $slug_url = (get_option('qcld_use_category_tab') == 'id') ? $cat->term_id : $cat->slug;
 
-
                                 ?>
                                 <li><a id="<?php echo esc_attr($slug_url); ?>"
                                        class="product-<?php echo esc_attr($slug_url); echo($i == 0 ? ' active' : ''); ?>" data-name="<?php echo esc_attr($cat->name); ?>" href="#">
@@ -778,11 +804,16 @@ if ( ! function_exists( 'wtcpl_load_products' ) ) {
                         <div class="each_cat<?php echo($i == 0 ? ' active' : ''); ?>" id="product-<?php echo esc_attr($slug_url); ?>">
                             <?php
 
-                            $args_query = array(
-                            'post_type'             => 'product',
-                            'post_status'           => 'publish',
-                            'tax_query'             => array(
-                                                    'relation' => 'OR',
+                            $args = array(
+                              'post_type'             => 'product',
+                              'post_status'           => 'publish',
+                              'posts_per_page'        => esc_attr($product_number), // Use the admin setting
+                              'orderby'               => esc_attr(get_option('qcld_orderby_product')),
+                              'order'                 => esc_attr(get_option('order_product_by')), 
+                              'suppress_filters'      => true, // This allows pre_get_posts to work
+                              'is_custom_query'       => true,  // Custom flag to target in your hook
+                              'tax_query'             => array(
+                                                     // 'relation' => 'OR',
                                                     array(
                                                         'taxonomy' => 'product_cat',
                                                         'field' => 'term_id',
@@ -792,16 +823,37 @@ if ( ! function_exists( 'wtcpl_load_products' ) ) {
                                         )
                                     );
 
-                            $product_querys = new WP_Query($args_query);
-                            $product_nums = $product_querys->post_count;
-
-                            if($product_nums > 0){
-
-                                echo do_shortcode('[product_category category="' . esc_attr($cat->slug) . '" per_page=' . esc_attr($product_number) . ' columns=' . esc_attr($column_number) . ' orderby="' . esc_attr(get_option('qcld_orderby_product')) . '" order="' . esc_attr(get_option('order_product_by')) . '"]');
-
-                            }else{
-                                echo "<div class='wtcpl_category_empty_msg'> ". esc_html( get_option('qc_woo_tabbed_show_empty_category_msg') ) ." </div>";
+                            // Respect "Hide out of stock items" global setting
+                            if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+                                $args['meta_query'][] = array(
+                                    'key'     => '_stock_status',
+                                    'value'   => 'outofstock',
+                                    'compare' => 'NOT IN',
+                                );
                             }
+
+                            $products = new WP_Query( $args );
+                            //$product_nums = $products->post_count;
+                            $columns = esc_attr($column_number);
+                            if ( empty($columns) ) {
+                              $columns = wc_get_loop_prop( 'columns' );
+                            }
+
+                            if ( $products->have_posts() ) {
+                              // Set WooCommerce loop properties dynamically for column classes to work
+                              wc_setup_loop( array( 'columns' => $columns ) ); 
+                              echo '<ul class="products columns-' . esc_attr($columns) . '">';
+                              while ( $products->have_posts() ) {
+                                $products->the_post();
+                                wc_get_template_part( 'content', 'product' );
+                              }
+                              echo '</ul>';
+                              wc_reset_loop(); // Reset the loop global
+                            } else {
+                              echo "<div class='wtcpl_category_empty_msg'> ". esc_html( get_option('qc_woo_tabbed_show_empty_category_msg') ) ." </div>";
+                            }
+
+                            wp_reset_postdata();
                             ?>
                         </div>
                         <?php $i++;
@@ -823,6 +875,18 @@ function plugin_settings_page()
     <?php
 }
 
+add_filter( 'body_class', 'woo_tab_add_body_class_if_shortcode' );
+if ( ! function_exists( 'woo_tab_add_body_class_if_shortcode' ) ) {
+  function woo_tab_add_body_class_if_shortcode( $classes ) {
+    global $post;
+    // Check if we have a post object and if it contains our specific shortcode
+    if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'wtcpl-product-cat' ) ) {
+        $classes[] = 'woocommerce';
+    }
+
+    return $classes;
+  }
+}
 
 
 

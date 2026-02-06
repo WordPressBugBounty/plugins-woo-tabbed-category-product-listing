@@ -88,8 +88,6 @@
 
 		$( window ).on( "load", function() {
 
-
-				
 			var data = {
 				'action': 'qcld_recommend_support_function_ajax',
 				'security': qcld_woo_tabbed_ajax_nonce
@@ -97,12 +95,46 @@
 
 	        jQuery.post(qcld_woo_tabbed_ajaxurl, data, function (response) {
 
-	           	$('.qcld-woo-tabbed-support').find('.qcld-plugins-lists').html(response);
+	           	//$('.qcld-woo-tabbed-support').find('.qcld-plugins-lists').html(response);
+	           	$('.qcld-woo-tabbed-support').find('.qcld-plugins-lists').prepend(response);
+
+				var data = {
+					'action': 'qcld_recommend_support_function_second_ajax',
+					'security': qcld_woo_tabbed_ajax_nonce
+				};
+
+		        jQuery.post(qcld_woo_tabbed_ajaxurl, data, function (response) {
+
+		           	$('.qcld-woo-tabbed-support').find('.qcld-plugins-lists').find('.recommended-plugins').last().after(response);
+
+					var data = {
+						'action': 'qcld_recommend_support_function_third_ajax',
+						'security': qcld_woo_tabbed_ajax_nonce
+					};
+
+			        jQuery.post(qcld_woo_tabbed_ajaxurl, data, function (response) {
+
+			           	$('.qcld-woo-tabbed-support').find('.qcld-plugins-lists').find('.recommended-plugins').last().after(response);
+
+						var data = {
+							'action': 'qcld_recommend_support_function_forth_ajax',
+							'security': qcld_woo_tabbed_ajax_nonce
+						};
+
+				        jQuery.post(qcld_woo_tabbed_ajaxurl, data, function (response) {
+
+				           	$('.qcld-woo-tabbed-support').find('.qcld-plugins-lists').find('.recommended-plugins').last().after(response);
+				           	$('.qcld-plugins-loading').remove();
+
+				        });
+
+			        });
+
+		        });
+
+
 
 	        });
-
-
-
 
 		});
 

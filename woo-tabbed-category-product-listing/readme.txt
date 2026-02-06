@@ -3,9 +3,9 @@ Contributors: quantumcloud
 Donate link: https://www.quantumcloud.com
 Tags: woocommerce category list, woocommerce product table, woocommerce, product table, woocommerce category tabs
 Requires at least: 4.7
-Tested up to: 6.6
+Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: https://www.quantumcloud.com
 
@@ -162,6 +162,9 @@ Please check: http://www.quantumcloud.com/blog/woocommerce-tabbed-category-wise-
 3. Under the settings page in admin you can find the help in "Tabbed Category" menu.
 
 == Changelog ==
+
+= 2.7.2 =
+# Updated designs
 
 = 2.7.1 =
 # End sale
